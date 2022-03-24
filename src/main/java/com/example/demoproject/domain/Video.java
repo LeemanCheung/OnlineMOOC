@@ -16,7 +16,7 @@ public class Video implements Serializable {
 
     private String summary;
 
-    
+
     private int price;
 
     @JsonProperty("cover_img")
