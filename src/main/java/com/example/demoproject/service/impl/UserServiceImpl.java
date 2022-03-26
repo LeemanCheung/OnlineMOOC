@@ -1,9 +1,10 @@
 package com.example.demoproject.service.impl;
 
-import com.example.demoproject.domain.User;
+import com.example.demoproject.model.entity.User;
 import com.example.demoproject.mapper.UserMapper;
 import com.example.demoproject.service.UserService;
 import com.example.demoproject.utils.CommonUtils;
+import com.example.demoproject.utils.JWTUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,27 +27,27 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-//    @Override
-//    public String findByPhoneAndPwd(String phone, String pwd) {
-//
-//        User user = userMapper.findByPhoneAndPwd(phone, CommonUtils.MD5(pwd));
-//
-//        if(user == null){
-//            return null;
-//
-//        }else {
-//            String token = JWTUtils.geneJsonWebToken(user);
-//            return token;
-//        }
-//
-//    }
+    @Override
+    public String findByPhoneAndPwd(String phone, String pwd) {
 
-//    @Override
-//    public User findByUserId(Integer userId) {
-//
-//        User user = userMapper.findByUserId(userId);
-//        return user;
-//    }
+        User user = userMapper.findByPhoneAndPwd(phone, CommonUtils.MD5(pwd));
+
+        if(user == null){
+            return null;
+
+        }else {
+            String token = JWTUtils.geneJsonWebToken(user);
+            return token;
+        }
+
+    }
+
+    @Override
+    public User findByUserId(Integer userId) {
+
+        User user = userMapper.findByUserId(userId);
+        return user;
+    }
 
     /**
      * 解析 user 对象

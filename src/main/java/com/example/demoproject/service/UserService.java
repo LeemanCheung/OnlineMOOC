@@ -1,8 +1,7 @@
 package com.example.demoproject.service;
 
-import com.example.demoproject.domain.User;
+import com.example.demoproject.model.entity.User;
 
-import java.util.List;
 import java.util.Map;
 
 public interface UserService {
@@ -13,10 +12,8 @@ public interface UserService {
      */
     int save(Map<String, String> userInfo);
 
-    //User findByUserId(Integer userId);
+    User findByUserId(Integer userId);
 
 
-//    String findByPhoneAndPwd(String phone, String pwd);
-//
-//    User findByUserId(Integer userId);
+    String findByPhoneAndPwd(String phone, String pwd);
 }

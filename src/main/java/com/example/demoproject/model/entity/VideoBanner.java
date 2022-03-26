@@ -1,4 +1,4 @@
-package com.example.demoproject.domain;
+package com.example.demoproject.model.entity;
 
 import java.util.Date;
 

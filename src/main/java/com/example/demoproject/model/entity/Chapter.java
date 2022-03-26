@@ -1,6 +1,4 @@
-package com.example.demoproject.domain;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
+package com.example.demoproject.model.entity;
 
 import java.util.Date;
 import java.util.List;

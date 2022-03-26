@@ -1,13 +1,12 @@
 package com.example.demoproject.controller;
 
 
-import com.example.demoproject.domain.User;
+import com.example.demoproject.model.request.LoginRequest;
 import com.example.demoproject.service.UserService;
 import com.example.demoproject.utils.JsonData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import java.util.Map;
 
 @RestController
@@ -40,18 +39,16 @@ public class UserController {
 
     /**
      * 登录接口
-     * @param user
+     * @param loginRequest
      * @return
      */
     @PostMapping("login")
-    //accept Json data from body
-    public JsonData login(@RequestBody  User user){
-//        System.out.println("user: "+ user.toString());
-//
-//        String token = userService.login(user.getName(),user.getPwd());
-//
-//        return token!=null?JsonData.buildSuccess(token):JsonData.buildError("error pwd or username");
-        return null;
+    public JsonData login(@RequestBody LoginRequest loginRequest){
+
+        String token = userService.findByPhoneAndPwd(loginRequest.getPhone(), loginRequest.getPwd());
+
+        return token == null ?JsonData.buildError("登录失败，账号密码错误"): JsonData.buildSuccess(token);
+
     }
 
     /**

@@ -1,14 +1,13 @@
 package com.example.demoproject.controller;
 
 
-import com.example.demoproject.domain.Video;
-import com.example.demoproject.domain.VideoBanner;
+import com.example.demoproject.model.entity.Video;
+import com.example.demoproject.model.entity.VideoBanner;
 import com.example.demoproject.service.VideoService;
 import com.example.demoproject.utils.JsonData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 @RestController

@@ -1,7 +1,7 @@
 package com.example.demoproject.service;
 
-import com.example.demoproject.domain.Video;
-import com.example.demoproject.domain.VideoBanner;
+import com.example.demoproject.model.entity.Video;
+import com.example.demoproject.model.entity.VideoBanner;
 
 import java.util.List;
 

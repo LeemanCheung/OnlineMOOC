@@ -1,14 +1,10 @@
 package com.example.demoproject.mapper;
 
-import com.example.demoproject.domain.Video;
-import com.example.demoproject.domain.VideoBanner;
+import com.example.demoproject.model.entity.Video;
+import com.example.demoproject.model.entity.VideoBanner;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 public interface VideoMapper{

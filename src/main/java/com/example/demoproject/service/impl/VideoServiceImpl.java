@@ -1,14 +1,12 @@
 package com.example.demoproject.service.impl;
 
-import com.example.demoproject.domain.Video;
-import com.example.demoproject.domain.VideoBanner;
+import com.example.demoproject.model.entity.Video;
+import com.example.demoproject.model.entity.VideoBanner;
 import com.example.demoproject.mapper.VideoMapper;
 import com.example.demoproject.service.VideoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 

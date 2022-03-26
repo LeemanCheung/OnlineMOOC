@@ -1,14 +1,9 @@
 package com.example.demoproject.filter;
 
-import com.example.demoproject.domain.User;
-import com.example.demoproject.service.impl.UserServiceImpl;
-import com.example.demoproject.utils.JsonData;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.util.StringUtils;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
