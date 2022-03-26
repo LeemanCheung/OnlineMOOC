@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebFilter(urlPatterns = "/api/v1/pri/*", filterName = "loginFilter")
+@WebFilter(urlPatterns = "/api/v2/pri/*", filterName = "loginFilter")
 public class LoginFilter implements Filter {
 
     private static final ObjectMapper objectMapper = new ObjectMapper();
@@ -36,38 +36,38 @@ public class LoginFilter implements Filter {
 
         System.out.println("doFilter LoginFilter======");
 
-        HttpServletRequest req = (HttpServletRequest) servletRequest;
-
-        HttpServletResponse resp = (HttpServletResponse) servletResponse;
-
-
-        String token = req.getHeader("token");
-        if(!StringUtils.hasLength(token)){
-            token = req.getParameter("token");
-        }
-
-
-        if(!StringUtils.hasLength(token)){
-
-            JsonData jsonData =  JsonData.buildError(-3,"未登录");
-            String jsonStr = objectMapper.writeValueAsString(jsonData);
-            renderJson(resp,jsonStr);
-
-        }else {
-            //判断token是否合法
-            User user = UserServiceImpl.sessionMap.get(token);
-            if(user!=null){
-                filterChain.doFilter(servletRequest,servletResponse);
-            }
-            else {
-
-                JsonData jsonData =  JsonData.buildError(-2,"登录失败，token无效");
-                String jsonStr = objectMapper.writeValueAsString(jsonData);
-                renderJson(resp,jsonStr);
-
-            }
-
-        }
+//        HttpServletRequest req = (HttpServletRequest) servletRequest;
+//
+//        HttpServletResponse resp = (HttpServletResponse) servletResponse;
+//
+//
+//        String token = req.getHeader("token");
+//        if(!StringUtils.hasLength(token)){
+//            token = req.getParameter("token");
+//        }
+//
+//
+//        if(!StringUtils.hasLength(token)){
+//
+//            JsonData jsonData =  JsonData.buildError(-3,"未登录");
+//            String jsonStr = objectMapper.writeValueAsString(jsonData);
+//            renderJson(resp,jsonStr);
+//
+//        }else {
+//            //判断token是否合法
+//            User user = UserServiceImpl.sessionMap.get(token);
+//            if(user!=null){
+//                filterChain.doFilter(servletRequest,servletResponse);
+//            }
+//            else {
+//
+//                JsonData jsonData =  JsonData.buildError(-2,"登录失败，token无效");
+//                String jsonStr = objectMapper.writeValueAsString(jsonData);
+//                renderJson(resp,jsonStr);
+//
+//            }
+//
+//        }
 
 
 

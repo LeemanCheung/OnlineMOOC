@@ -8,9 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.Map;
 
 @RestController
-@RequestMapping("api/v1/pub/user")
+@RequestMapping("api/v1/pri/user")
 public class UserController {
 
 
@@ -24,6 +25,20 @@ public class UserController {
     UserService userService;
 
     /**
+     * 注册接口
+     * @param userInfo
+     * @return
+     */
+    @PostMapping("register")
+    public JsonData register(@RequestBody Map<String,String> userInfo ){
+        System.out.println("111");
+        int rows = userService.save(userInfo);
+
+        return rows == 1 ? JsonData.buildSuccess(): JsonData.buildError("注册失败，请重试");
+
+    }
+
+    /**
      * 登录接口
      * @param user
      * @return
@@ -31,19 +46,20 @@ public class UserController {
     @PostMapping("login")
     //accept Json data from body
     public JsonData login(@RequestBody  User user){
-        System.out.println("user: "+ user.toString());
-
-        String token = userService.login(user.getName(),user.getPwd());
-
-        return token!=null?JsonData.buildSuccess(token):JsonData.buildError("error pwd or username");
+//        System.out.println("user: "+ user.toString());
+//
+//        String token = userService.login(user.getName(),user.getPwd());
+//
+//        return token!=null?JsonData.buildSuccess(token):JsonData.buildError("error pwd or username");
+        return null;
     }
 
     /**
      * 列出全部用户
      * @return
      */
-    @GetMapping("list")
-    public JsonData listUser(){
-        return JsonData.buildSuccess(userService.listUser());
-    }
+//    @GetMapping("list")
+//    public JsonData listUser(){
+//        return JsonData.buildSuccess(userService.listUser());
+//    }
 }
