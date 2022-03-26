@@ -9,6 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 public class CustomExtHandler {
     @ExceptionHandler(value = Exception.class)
     JsonData handlerException(Exception e, HttpServletRequest request){
-        return JsonData.buildError("server error",-2);
+        return JsonData.buildError(-2,"server error");
     }
 }

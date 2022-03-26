@@ -1,6 +1,9 @@
 package com.example.demoproject.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Date;
+import java.util.List;
 
 public class Chapter {
     private Integer id;
@@ -12,6 +15,17 @@ public class Chapter {
     private Integer ordered;
 
     private Date createTime;
+
+//    @JsonProperty("episode_list")
+    private List<Episode> episodeList;
+
+    public List<Episode> getEpisodeList() {
+        return episodeList;
+    }
+
+    public void setEpisodeList(List<Episode> episodeList) {
+        this.episodeList = episodeList;
+    }
 
     public Integer getId() {
         return id;
@@ -61,6 +75,7 @@ public class Chapter {
                 ", title='" + title + '\'' +
                 ", ordered=" + ordered +
                 ", createTime=" + createTime +
+                ", episodeList=" + episodeList +
                 '}';
     }
 }

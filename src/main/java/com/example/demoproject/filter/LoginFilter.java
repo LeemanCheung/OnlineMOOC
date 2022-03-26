@@ -49,7 +49,7 @@ public class LoginFilter implements Filter {
 
         if(!StringUtils.hasLength(token)){
 
-            JsonData jsonData =  JsonData.buildError("未登录",-3);
+            JsonData jsonData =  JsonData.buildError(-3,"未登录");
             String jsonStr = objectMapper.writeValueAsString(jsonData);
             renderJson(resp,jsonStr);
 
@@ -61,7 +61,7 @@ public class LoginFilter implements Filter {
             }
             else {
 
-                JsonData jsonData =  JsonData.buildError("登录失败，token无效",-2);
+                JsonData jsonData =  JsonData.buildError(-2,"登录失败，token无效");
                 String jsonStr = objectMapper.writeValueAsString(jsonData);
                 renderJson(resp,jsonStr);
 

@@ -1,5 +1,6 @@
 package com.example.demoproject;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

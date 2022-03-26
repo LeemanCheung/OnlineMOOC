@@ -28,8 +28,8 @@ public class Video implements Serializable {
 
     private Double point;
 
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private List<Character> characterList;
+//    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private List<Chapter> chapterList;
 
     public Video(){}
 
@@ -95,12 +95,12 @@ public class Video implements Serializable {
         this.createTime = createTime;
     }
 
-    public List<Character> getCharacterList() {
-        return characterList;
+    public List<Chapter> getChapterList() {
+        return chapterList;
     }
 
-    public void setCharacterList(List<Character> characterList) {
-        this.characterList = characterList;
+    public void setChapterList(List<Chapter> chapterList) {
+        this.chapterList = chapterList;
     }
 
     @Override
@@ -113,7 +113,7 @@ public class Video implements Serializable {
                 ", coverImg='" + coverImg + '\'' +
                 ", createTime=" + createTime +
                 ", point=" + point +
-                ", characterList=" + characterList +
+                ", characterList=" + chapterList +
                 '}';
     }
 }
