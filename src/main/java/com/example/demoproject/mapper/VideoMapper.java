@@ -1,6 +1,8 @@
 package com.example.demoproject.mapper;
 
 import com.example.demoproject.domain.Video;
+import com.example.demoproject.domain.VideoBanner;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -9,24 +11,32 @@ import java.util.List;
 import java.util.Map;
 
 
-@Repository
-public class VideoMapper {
+public interface VideoMapper{
 
-    private static Map<Integer, Video> videoMap = new HashMap<>();
+    /**
+     * 查询视频列表
+     * @return
+     */
+    List<Video> listVideo();
 
-    static {
+    /**
+     * 首页轮播图列表
+     * @return
+     */
+    List<VideoBanner> listVideoBanner();
 
-        videoMap.put(1, new Video(1,"java"));
-        videoMap.put(2, new Video(2,"Spring"));
-        videoMap.put(3, new Video(3,"SpringCloud"));
-        videoMap.put(4, new Video(4,"C++"));
-        videoMap.put(5, new Video(5,"maven"));
+    /**
+     * 查询视频详情
+     * @param videoId
+     * @return
+     */
+    Video findDetailById(@Param("video_id") int videoId);
 
-    }
-
-    public List<Video> listVideo(){
-        List<Video> list = new ArrayList<>();
-        list.addAll(videoMap.values());
-        return list;
-    }
+    /**
+     * 简单查询视频信息
+     * @param videoId
+     * @return
+     */
+    Video findById(@Param("video_id") int videoId);
 }
+

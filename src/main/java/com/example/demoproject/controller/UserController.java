@@ -33,7 +33,7 @@ public class UserController {
     public JsonData login(@RequestBody  User user){
         System.out.println("user: "+ user.toString());
 
-        String token = userService.login(user.getUsername(),user.getPwd());
+        String token = userService.login(user.getName(),user.getPwd());
 
         return token!=null?JsonData.buildSuccess(token):JsonData.buildError("error pwd or username");
     }

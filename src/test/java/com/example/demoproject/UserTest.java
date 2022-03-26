@@ -18,7 +18,7 @@ public class UserTest {
     @Test
     public void loginTest(){
         User user = new User();
-        user.setUsername("ada");
+        user.setName("ada");
         user.setPwd("123");
         JsonData jsonData = userController.login(user);
         System.out.println(jsonData.toString());

@@ -10,14 +10,14 @@ import java.util.List;
 
 public class Video implements Serializable {
 
-    private int id;
+    private Integer id;
 
     private  String title;
 
     private String summary;
 
 
-    private int price;
+    private Integer price;
 
     @JsonProperty("cover_img")
     private  String coverImg;
@@ -25,6 +25,8 @@ public class Video implements Serializable {
     @JsonProperty("create_time")
     @JsonFormat(pattern="yyyy-MM-dd-hh:mm:ss",locale="zh",timezone="GMT+8")
     private Date createTime;
+
+    private Double point;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<Character> characterList;
@@ -37,19 +39,19 @@ public class Video implements Serializable {
         this.createTime = new Date();
     }
 
-    public List<Character> getCharacterList() {
-        return characterList;
+    public Double getPoint() {
+        return point;
     }
 
-    public void setCharacterList(List<Character> characterList) {
-        this.characterList = characterList;
+    public void setPoint(Double point) {
+        this.point = point;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -69,11 +71,11 @@ public class Video implements Serializable {
         this.summary = summary;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 
@@ -93,6 +95,14 @@ public class Video implements Serializable {
         this.createTime = createTime;
     }
 
+    public List<Character> getCharacterList() {
+        return characterList;
+    }
+
+    public void setCharacterList(List<Character> characterList) {
+        this.characterList = characterList;
+    }
+
     @Override
     public String toString() {
         return "Video{" +
@@ -102,6 +112,7 @@ public class Video implements Serializable {
                 ", price=" + price +
                 ", coverImg='" + coverImg + '\'' +
                 ", createTime=" + createTime +
+                ", point=" + point +
                 ", characterList=" + characterList +
                 '}';
     }

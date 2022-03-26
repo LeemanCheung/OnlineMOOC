@@ -1,23 +1,31 @@
 package com.example.demoproject.domain;
 
+import java.util.Date;
+
 public class Chapter {
-    private int id;
-    private int videoId;
+    private Integer id;
+
+    private Integer videoId;
+
     private String title;
 
-    public int getId() {
+    private Integer ordered;
+
+    private Date createTime;
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getVideoId() {
+    public Integer getVideoId() {
         return videoId;
     }
 
-    public void setVideoId(int videoId) {
+    public void setVideoId(Integer videoId) {
         this.videoId = videoId;
     }
 
@@ -27,5 +35,32 @@ public class Chapter {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Integer getOrdered() {
+        return ordered;
+    }
+
+    public void setOrdered(Integer ordered) {
+        this.ordered = ordered;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Chapter{" +
+                "id=" + id +
+                ", videoId=" + videoId +
+                ", title='" + title + '\'' +
+                ", ordered=" + ordered +
+                ", createTime=" + createTime +
+                '}';
     }
 }
