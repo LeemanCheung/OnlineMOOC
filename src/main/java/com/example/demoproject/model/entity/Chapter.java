@@ -1,20 +1,24 @@
 package com.example.demoproject.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Date;
 import java.util.List;
 
 public class Chapter {
     private Integer id;
 
+    @JsonProperty("video_id")
     private Integer videoId;
 
     private String title;
 
     private Integer ordered;
 
+    @JsonProperty("create_time")
     private Date createTime;
 
-//    @JsonProperty("episode_list")
+    @JsonProperty("episode_list")
     private List<Episode> episodeList;
 
     public List<Episode> getEpisodeList() {
