@@ -45,8 +45,9 @@ public class VideoOrderServiceImpl implements VideoOrderService {
      * @param videoId
      * @return
      */
+    //加入事物回滚
     @Override
-    //@Transactional
+    @Transactional
     public int save(int userId, int videoId) {
 
         //判断是否已经购买
