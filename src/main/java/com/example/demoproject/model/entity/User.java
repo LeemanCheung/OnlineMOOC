@@ -1,6 +1,7 @@
 package com.example.demoproject.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Date;
@@ -10,6 +11,7 @@ public class User {
 
     private String name;
 
+    @JsonIgnore
     private String pwd;
 
     @JsonProperty("head_img")
