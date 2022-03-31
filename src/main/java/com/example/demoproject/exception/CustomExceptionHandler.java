@@ -24,9 +24,9 @@ public class CustomExceptionHandler {
 
         if( e instanceof CustomException ){
 
-            CustomException xdException = (CustomException) e;
+            CustomException myException = (CustomException) e;
 
-            return JsonData.buildError(xdException.getCode(),xdException.getMsg());
+            return JsonData.buildError(myException.getCode(),myException.getMsg());
 
         }else {
 

@@ -70,11 +70,23 @@ public class VideoOrderServiceImpl implements VideoOrderService {
 
         int rows = videoOrderMapper.saveOrder(newVideoOrder);
 
+        return rows;
+    }
+
+
+    @Override
+    @Transactional
+    public int record(int userId, int videoId, int episodeNum) {
+
+        //判断是否已经购买
+        VideoOrder videoOrder = videoOrderMapper.findByUserIdAndVideoIdAndState(userId,videoId,1);
+
+        if(videoOrder==null){return  0;}
 
 
         //生成播放记录
-        if(rows == 1){
-            Episode episode = episodeMapper.findFirstEpisodeByVideoId(videoId);
+        if(videoOrder!=null){
+            Episode episode = episodeMapper.findEpisode(videoId,episodeNum);
             if(episode == null){
                 throw  new CustomException(-1,"视频没有集信息，请运营人员检查");
             }
@@ -85,9 +97,33 @@ public class VideoOrderServiceImpl implements VideoOrderService {
             playRecord.setUserId(userId);
             playRecord.setVideoId(videoId);
             playRecordMapper.saveRecord(playRecord);
+            return 1;
         }
 
-        return rows;
+        return 0;
+    }
+
+    @Override
+    @Transactional
+    public Episode continuePlay(int userId, int videoId) {
+
+        //判断是否已经购买
+        VideoOrder videoOrder = videoOrderMapper.findByUserIdAndVideoIdAndState(userId,videoId,1);
+
+        if(videoOrder==null){return  null;}
+
+
+        //查找播放记录
+        if(videoOrder!=null){
+            PlayRecord playRecord = playRecordMapper.findPlayRecord(userId, videoId);
+            if(playRecord == null){
+                throw  new CustomException(-1,"视频没有播放信息，请运营人员检查");
+            }
+            Episode episode = episodeMapper.findEpisodeById(playRecord.getEpisodeId());
+            return episode;
+        }
+
+        return null;
     }
 
 

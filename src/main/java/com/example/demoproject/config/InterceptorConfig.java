@@ -1,5 +1,6 @@
 package com.example.demoproject.config;
 
+import com.example.demoproject.interceptor.CrosInterceptor;
 import com.example.demoproject.interceptor.LoginInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,12 +23,18 @@ public class InterceptorConfig implements WebMvcConfigurer {
         return new LoginInterceptor();
     }
 
+    @Bean
+    CrosInterceptor corsInterceptor(){
+        return new CrosInterceptor();
+    }
+
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         /**
          * 拦截全部路径，这个跨域需要放在最上面
          */
-        //registry.addInterceptor(corsInterceptor()).addPathPatterns("/**");
+        registry.addInterceptor(corsInterceptor()).addPathPatterns("/**");
 
 
         registry.addInterceptor(loginInterceptor()).addPathPatterns("/api/v1/pri/*/*/**")

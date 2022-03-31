@@ -26,7 +26,7 @@ public class VideoServiceImpl implements VideoService {
 
         try{
 
-            Object cacheObj =  baseCache.getTenMinuteCache().get(CacheKeyManager.INDEX_VIDEL_LIST,()->{
+            Object cacheObj =  baseCache.getTenMinuteCache().get(CacheKeyManager.INDEX_VIDEO_LIST,()->{
 
                 List<Video> videoList = videoMapper.listVideo();
 
@@ -56,7 +56,7 @@ public class VideoServiceImpl implements VideoService {
 
                 List<VideoBanner> bannerList =  videoMapper.listVideoBanner();
 
-                System.out.println("从数据库里面找轮播图列表");
+                System.out.println("get banner list from DB");
 
                 return bannerList;
 

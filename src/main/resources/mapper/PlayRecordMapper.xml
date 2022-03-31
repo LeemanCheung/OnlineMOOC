@@ -8,4 +8,8 @@
         VALUES (#{userId},#{videoId},#{currentNum},#{episodeId},#{createTime});
 
     </insert>
+
+    <select id="findPlayRecord" resultType="PlayRecord">
+        select * from play_record where user_id=#{user_id} and video_id=#{video_id} order by create_time desc limit 0, 1
+    </select>
 </mapper>
