@@ -1,0 +1,14 @@
+{
+  "serverUrl": "http://127.0.0.1",
+  "isStrict": false,
+  "allInOne": true,
+  "packageFilters": "com.example.demoproject.controller.*",
+  "projectName": "测试项目",
+  "appKey": "20210811875071685840076800",
+  "appToken": "7b65406490ea48babedf52f73eddaa19",
+  "secret": "f#T0Qotd#<$O%hcsAmAn5uBAx!ZH.>^.",
+  "openUrl": "http://localhost:7700/api",
+  "debugEnvName":"测试环境",
+  "debugEnvUrl":"http://127.0.0.1",
+  "outPath":"doc"
+}

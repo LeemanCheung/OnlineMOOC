@@ -6,10 +6,16 @@ import com.example.demoproject.model.entity.VideoBanner;
 import com.example.demoproject.mapper.VideoMapper;
 import com.example.demoproject.service.VideoService;
 import com.example.demoproject.utils.BaseCache;
+import com.google.common.base.Charsets;
+import com.google.common.hash.BloomFilter;
+import com.google.common.hash.Funnels;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.nio.charset.Charset;
+import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 
 @Service
@@ -78,6 +84,12 @@ public class VideoServiceImpl implements VideoService {
         //单独构建一个缓存key，每个视频的key是不一样的
         String videoCacheKey = String.format(CacheKeyManager.VIDEO_DETAIL,videoId);
 
+        BloomFilter<String> bloomFilter = BloomFilter.create(Funnels.stringFunnel(Charsets.UTF_8),10000,0.02);
+        if(!bloomFilter.mightContain(videoCacheKey)) {
+            Video video = videoMapper.findDetailById(videoId);
+            bloomFilter.put(videoCacheKey);
+            return video;
+        }
         try{
 
             Object cacheObject = baseCache.getOneHourCache().get( videoCacheKey, ()->{

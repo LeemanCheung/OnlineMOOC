@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.demoproject.mapper.VideoMapper">
+
+    <!--retrieve video-->
     <select id="listVideo" resultType="Video">
         select * from video
     </select>
 
 
+    <!--retrieve video banners-->
     <select id="listVideoBanner" resultType="VideoBanner">
 
         select  * from video_banner order by weight asc
 
     </select>
 
+    <!--retrieve video-->
     <select id="findById" resultType="Video">
         select * from video where id=#{video_id}
     </select>
 
+
+    <!--Result Map-->
     <resultMap id="VideoDetailResultMap" type="Video">
 
         <id column="id" jdbcType="INTEGER" property="id"/>
@@ -48,7 +54,7 @@
 
     </resultMap>
 
-
+    <!--retrieve video details-->
     <select id="findDetailById" resultMap="VideoDetailResultMap">
 
         select
